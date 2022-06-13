@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lina/login/login_register_screen.dart';
+import 'package:lina/home/navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginRegisterScreen(),
+      home: const NavigationScreen(),
     );
   }
 }

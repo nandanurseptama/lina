@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lina/home/navigation_screen.dart';
 import 'package:lina/login/widgets/login_form_widget.dart';
 
 import 'assets/login_register_assets.dart';
-import 'widgets/register_form_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -14,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isPasswordHide = true;
+  final TextEditingController passwordController = TextEditingController();
+  final FocusNode passwordFocusNode = FocusNode();
   void changeIsPasswordHide() {
     setState(() {
       isPasswordHide = !isPasswordHide;
@@ -66,6 +68,16 @@ class _LoginScreenState extends State<LoginScreen> {
               LoginFormWidget(
                 isPasswordHide: isPasswordHide,
                 onClickViewHidePassword: changeIsPasswordHide,
+                onClickLogin: () {
+                  if (passwordController.text == "123456") {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const NavigationScreen();
+                    }));
+                  }
+                },
+                passwordController: passwordController,
+                passwordFocusNode: passwordFocusNode,
               ),
             ],
           ),

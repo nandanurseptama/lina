@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:lina/login/assets/login_register_assets.dart';
 
+import '../assets/login_register_assets.dart';
 import '../style/color.dart';
 
 class LoginFormWidget extends StatelessWidget {
   final bool isPasswordHide;
   final void Function() onClickViewHidePassword;
+  final TextEditingController passwordController;
+  final void Function() onClickLogin;
+  final FocusNode passwordFocusNode;
   const LoginFormWidget(
       {Key? key,
       required this.onClickViewHidePassword,
-      required this.isPasswordHide})
+      required this.isPasswordHide,
+      required this.onClickLogin,
+      required this.passwordController, required this.passwordFocusNode})
       : super(key: key);
 
   @override
@@ -93,6 +98,7 @@ class LoginFormWidget extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: TextFormField(
+        controller: passwordController,
         obscureText: isPasswordHide,
         style: const TextStyle(
           fontFamily: "Poppins",
@@ -151,7 +157,7 @@ class LoginFormWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           borderSide:
               const BorderSide(color: Color(LoginRegisterColor.primaryColor))),
-      onPressed: () {},
+      onPressed: onClickLogin,
       child: const Text(
         "Continue",
         style: TextStyle(
@@ -163,6 +169,7 @@ class LoginFormWidget extends StatelessWidget {
       ),
     );
   }
+
   Widget _forgotPassword() {
     return const Text(
       "Forgot your password ?",

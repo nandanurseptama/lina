@@ -126,21 +126,25 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: (){
+            onTap: () {
               setState(() {
                 selectedCategory = index;
               });
-              loadMeals(categoryName: mealCategories[selectedCategory].categoryName);
+              loadMeals(
+                  categoryName: mealCategories[selectedCategory].categoryName);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 padding: const EdgeInsets.all(8.0),
-                decoration: index != selectedCategory ? null : const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 2,color: Color(LoginRegisterColor.primaryColor))
-                  ),
-                ),
+                decoration: index != selectedCategory
+                    ? null
+                    : const BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 2,
+                                color: Color(LoginRegisterColor.primaryColor))),
+                      ),
                 child: Text(
                   mealCategories[index].categoryName,
                   style: TextStyle(
@@ -169,9 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: MealWidget(
-                  mealImage: meals[index].mealImage,
-                  mealName: meals[index].mealName),
+              child: MealWidget(meal: meals[index]),
             );
           },
         ));
